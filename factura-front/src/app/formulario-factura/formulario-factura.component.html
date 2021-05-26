@@ -1,0 +1,98 @@
+<div class="container">
+    <h1>Factura</h1>
+
+    Fecha: {{dia}}/{{mes}}/{{anio}}
+    
+    <form [formGroup]="formularioFactura">
+        <div class="row">
+        <h5>Facturar a nombre de: </h5>
+        <div class="col-sm-4">
+            <label class="form-label">Nombre Cliente</label>
+            <input  type="text" class="form-control" formControlName="nombreCliente">
+            
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label">Compañia Cliente</label>
+            <input type="text" class="form-control" formControlName="compañiaCliente">
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label">Ciudad</label>
+            <input type="text" class="form-control" formControlName="ciudadCliente">
+        </div>
+        <div class="col-sm-4">
+            <label class="form-label">Telefono</label>
+            <input type="text" class="form-control" formControlName="telefonoCliente">
+        </div>
+
+
+    </div>
+
+
+    </form>
+
+    <h3>Detalle Productos</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">SubTotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor= "let producto of productosAgregados">
+                
+                <td>{{producto.nombreProducto}}</td>
+                <td>{{producto.descripcionProducto}}</td>
+                <td>{{producto.cantidad}}</td>
+                <td>{{producto.costo}}</td>
+                <td>{{producto.subtotal}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <h2>Total : {{total}}</h2>
+
+    <form [formGroup]="formularioProducto">
+        <div class="row">
+        
+            <h3>Agregar Productos</h3>
+
+            <div class="col-sm-4">
+                <label class="form-label">Nombre Producto</label>
+                <input type="text" class="form-control" formControlName="productoNombre">
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label">Descripcion</label>
+                <input type="text" class="form-control" formControlName="productoDescripcion">
+            </div>
+
+            <div class="col-sm-4">
+                <label class="form-label">Cantidad</label>
+                <input type="number" class="form-control" formControlName="cantidad">
+            </div>
+
+            <div class="col-sm-4">
+                <label class="form-label">Precio</label>
+                <input type="number" class="form-control" formControlName="precio">
+            </div>
+            
+        </div>
+
+    </form>
+
+    <br>
+
+    <div class="row">
+        <button (click)="agregar()" class="btn btn-primary col-sm-3">Agregar Producto</button>
+
+    <button (click)="facturar()" class="btn btn-primary col-sm-3">Facturar</button>
+
+    </div>
+    
+    
+</div>
